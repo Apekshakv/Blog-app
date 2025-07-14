@@ -11,7 +11,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 
-mongoose.connect("mongodb+srv://kvapeksha3:cpxkVvigLniZdFQP@cluster0.neqzahq.mongodb.net/React", {
+mongoose.connect("mongodb+srv://kvapeksha3:@cluster0.neqzahq.mongodb.net/React", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
