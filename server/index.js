@@ -11,10 +11,15 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 
-mongoose.connect("mongodb://localhost:27017/React")
+mongoose.connect("mongodb+srv://kvapeksha3:cpxkVvigLniZdFQP@cluster0.neqzahq.mongodb.net/React", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+
+
 
 app.use(cors({
-  origin: true,  
+  origin: 'http://localhost:3000',  
   methods: ['GET', 'POST'],
 }));
 
@@ -58,3 +63,4 @@ app.get('/posts', async (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
