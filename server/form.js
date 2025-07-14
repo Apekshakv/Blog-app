@@ -3,22 +3,24 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+
+
 router.use(bodyParser.json({ limit: '30mb', extended: true }));
 router.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 router.use(cors({
-  origin: 'http://localhost:3000',
+  origin: true, 
   methods: ['GET', 'POST'],
   credentials: true
 }));
 
 
-mongoose.connect('mongodb://localhost:27017/React', {
+mongoose.connect('mongodb+srv://kvapeksha3:cpxkVvigLniZdFQP@cluster0.neqzahq.mongodb.net/React', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+.then(() => console.log(" Connected to MongoDB Atlas via Mongoose"))
+.catch(err => console.error(" MongoDB connection error:", err));
 
 
 const loginSchema = new mongoose.Schema({
@@ -46,14 +48,16 @@ router.post('/forms', async (req, res) => {
     if (!Email || !password) {
       return res.json({ message: 'Email and password are required' });
     }
-    const hash = await bcrypt.hash(password,10)
-    const newUser = new User({ Email, password : hash});
+
+    const hash = await bcrypt.hash(password, 10);
+    const newUser = new User({ Email, password: hash });
     await newUser.save();
+
     res.json({
       message: 'User created successfully',
       user: { Email: newUser.Email, _id: newUser._id }
     });
-    
+
   } catch (err) {
     console.error('Save failed:', err);
     if (err.code === 11000) {
@@ -62,7 +66,6 @@ router.post('/forms', async (req, res) => {
     res.json({ message: 'Server error while saving user' });
   }
 });
-
 
 
 router.post('/forms/check', async (req, res) => {
@@ -91,8 +94,5 @@ router.post('/forms/check', async (req, res) => {
   }
 });
 
-
-
-
-
 module.exports = router;
+
