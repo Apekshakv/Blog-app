@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 mongoose.connect("mongodb://localhost:27017/React")
 
 app.use(cors({
-  origin: 'http://localhost:3000',  
+  origin: true,  
   methods: ['GET', 'POST'],
 }));
 
