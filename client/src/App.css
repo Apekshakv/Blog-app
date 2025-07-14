@@ -1,0 +1,46 @@
+/* App.css */
+body{
+  margin: 0;
+  padding: 0;
+}
+.app-layout {
+  background-color: #fafafa;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.header-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 800px;
+}
+
+.header-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 16px;
+}
+
+.app-title {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  color: #262626;
+}
+
+.main-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
